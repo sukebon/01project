@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import CatalogCard from "components/CatalogCard/CatalogCard";
+import CatalogCard from "../../components/CatalogCard/CatalogCard";
 import Styles from "./index.module.scss";
 
 const Catalog: React.FC<any> = ({ catalogs }) => {
