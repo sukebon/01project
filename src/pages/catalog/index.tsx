@@ -15,7 +15,7 @@ export default Catalog;
 
 export async function getStaticProps() {
   const url = "https://daimaru-hakui.microcms.io/api/v1";
-  const apiKey: any = process.env.API_KEY;
+  const apiKey: string = "3c62454d-9a98-4e3d-aee1-d337c3bbdf7e";
   const res = await fetch(`${url}/catalog?limit=250`, {
     headers: {
       "X-API-KEY": apiKey,
