@@ -27,10 +27,10 @@ export async function getStaticProps() {
       notFound: true,
     };
   }
-  // let filterData = data.contents.filter((content: any) => {
-  //   return content.transaction === true;
-  // });
-  let mapData = data.contents.map((data: any) => {
+  let filterData = data.contents.filter((content: any) => {
+    return content.transaction === true;
+  });
+  let mapData = filterData.map((data: any) => {
     return {
       id: data.id,
       maker: data.maker,
