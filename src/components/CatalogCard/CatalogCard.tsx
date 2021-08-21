@@ -21,11 +21,11 @@ const CatalogCard: React.FC<any> = ({ catalogs }) => {
                 </a>
               </Link>
             </div>
-            <div className={`p-2`}>
+            <div className={`p-2 text-sm`}>
               <div>
                 {catalog.title} <span className={`ml-2`}>{catalog.year}</span>
               </div>
-              <div>{catalog.maker}</div>
+              <div className={`mt-1`}>{catalog.maker}</div>
             </div>
           </div>
         </div>

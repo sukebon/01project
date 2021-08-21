@@ -1,14 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
+import { Button } from "@material-ui/core";
+import { useState } from "react";
 import CatalogCard from "../../components/CatalogCard/CatalogCard";
 import Styles from "./index.module.scss";
 
-const Catalog: React.FC<any> = ({ catalogs }) => {
+const Catalog: React.FC<any> = ({ apiData }) => {
+  const [catalogs, setCatalogs] = useState(apiData);
+  const [inputValue, setInputValue] = useState("");
+
+  const onChangeText = (e: any) => {
+    e.preventDefault();
+    setInputValue(e.target.value);
+    let newCatalog = apiData.filter((catalog: any) => {
+      return catalog.title.includes(e.target.value);
+    });
+    setCatalogs(newCatalog);
+  };
+
   return (
-    <div
-      className={`${Styles.container} flex flex-wrap justify-center  mx-auto`}
-    >
-      <CatalogCard catalogs={catalogs} />
-    </div>
+    <>
+      <div className={`p-10 flex justify-center`}>
+        <input type="text" value={inputValue} onChange={onChangeText} />
+        <Button variant="contained">Default</Button>
+      </div>
+      <section
+        className={`${Styles.container} flex flex-wrap justify-center  mx-auto`}
+      >
+        <CatalogCard catalogs={catalogs} />
+      </section>
+    </>
   );
 };
 export default Catalog;
@@ -42,9 +62,9 @@ export async function getStaticProps() {
       image: data.image,
     };
   });
-  const catalogs = mapData;
+  const apiData = mapData;
   return {
-    props: { catalogs },
+    props: { apiData },
   };
 }
 

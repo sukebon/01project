@@ -1,20 +1,41 @@
 import Link from "next/link";
 import React from "react";
+import Styles from "./Header.module.scss";
+import HomeIcon from "@material-ui/icons/Home";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
+import LocalPostOfficeIcon from "@material-ui/icons/LocalPostOffice";
 
 const Header: React.FC = () => {
   return (
     <>
-      <div className="flex items-cente bg-white w-64 h-full relative">
+      <div className={`w-full bg-white shadow-md md:w-72 md:min-h-full `}>
         <div
-          className={`flex flex-col items-center justify-end w-64 h-screen fixed p-4`}
+          className={`flex items-center h-24 p-6 md:flex-col md:items-center md:h-screen md:fixed md:p-4 md:mt-12 md:w-72`}
         >
-          <div>
-            <Link href="/">トップページ</Link>
-          </div>
-          <div>
-            <Link href="/catalog">カタログ</Link>
-          </div>
-          <div>DAIMARU HAKUI</div>
+          <div className={`text-2xl font-shinppori`}>DAIMARU HAKUI</div>
+          <nav className={`hidden md:block my-16`}>
+            <ul className={`${Styles.list}`}>
+              <li>
+                <HomeIcon className={`mb-1 mr-2`} />
+                <Link href="/">
+                  <a className={``}>トップページ</a>
+                </Link>
+              </li>
+              <li>
+                <MenuBookIcon className={`mb-1 mr-2`} />
+                <Link href="/catalog">
+                  <a>カタログ</a>
+                </Link>
+              </li>
+              <li>
+                <LocalPostOfficeIcon className={`mb-1 mr-2`} />
+                <Link href="/">
+                  <a>お問い合わせ</a>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <div className={`hidden text-xs md:block`}>© 2021 DAIMARU-HAKUI.</div>
         </div>
       </div>
     </>

@@ -6,11 +6,11 @@ const Layout: React.FC = (props) => {
   const { children } = props;
   return (
     <>
-      <div className="flex min-h-screen">
-        <header className={`shadow-md`}>
+      <div className="flex flex-col md:flex-row min-h-screen w-full">
+        <header className={``}>
           <Header />
         </header>
-        <main>
+        <main className={`min-h-screen w-full`}>
           {children}
           <Footer />
         </main>

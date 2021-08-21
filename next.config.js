@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  distDir: "build",
+  // distDir: "build",
+  experimental: {
+    optimizeFonts: true,
+  },
 };
