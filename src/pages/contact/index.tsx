@@ -87,7 +87,9 @@ const Contact: React.FC = () => {
           <br />
           メールでのお問い合わせは下記フォームにてどうぞ。
         </p>
-        <div className={`flex w-11/12 border rounded-md my-12 p-12 lg:w-7/12`}>
+        <div
+          className={`flex w-11/12 border rounded-md mt-6 p-6 lg:p-12 lg:w-7/12`}
+        >
           <form className={`${Styles.form} w-full`}>
             <h2 className={`mb-7 text-center`}>
               ※<span className={`text-red-600`}>（必須）</span>
@@ -188,7 +190,9 @@ const Contact: React.FC = () => {
                 onChange={(e) => setMessage(e.target.value)}
               />
             </div>
-            <div className={`flex justify-center`}>
+            <div
+              className={`flex flex-col items-center justify-center lg:flex-row`}
+            >
               <div className={`m-2`}>
                 <Button
                   variant="contained"
