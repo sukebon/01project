@@ -6,7 +6,7 @@ const Layout: React.FC = (props) => {
   const { children } = props;
   return (
     <>
-      <div className="flex flex-col md:flex-row min-h-screen w-full">
+      <div className="flex flex-col lg:flex-row min-h-screen w-full">
         <header className={``}>
           <Header />
         </header>

@@ -1,4 +1,9 @@
-.image {
-  max-width: none;
-  height: 330px;
+.root {
+  a:hover {
+    text-decoration: none;
+  }
+  .image {
+    max-width: none;
+    height: 330px;
+  }
 }

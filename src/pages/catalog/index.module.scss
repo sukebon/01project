@@ -10,3 +10,9 @@
   //   width: 1280px;
   // }
 }
+.formArea {
+  margin-bottom: 0.5rem;
+  @media screen and (min-width: 1024px) {
+    margin: 0 0.25rem;
+  }
+}

@@ -4,27 +4,28 @@ import Styles from "./Header.module.scss";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import LocalPostOfficeIcon from "@material-ui/icons/LocalPostOffice";
+import TemporaryDrawer from "components/TemporaryDrawer";
 
 const Header: React.FC = () => {
   return (
     <>
-      <div className={`w-full bg-white shadow-md md:w-72 md:min-h-full `}>
+      <div className={`w-full bg-white shadow-md lg:w-72 lg:min-h-full `}>
         <div
-          className={`flex items-center h-24 p-6 md:flex-col md:items-center md:h-screen md:fixed md:p-4 md:mt-12 md:w-72`}
+          className={`flex items-center justify-between h-24 p-6 lg:flex-col lg:justify-start lg:items-center lg:h-screen lg:fixed lg:p-4 lg:mt-12 lg:w-72`}
         >
           <div className={`text-2xl font-shinppori`}>DAIMARU HAKUI</div>
-          <nav className={`hidden md:block my-16`}>
+          <nav className={`hidden lg:block my-16`}>
             <ul className={`${Styles.list}`}>
               <li>
                 <HomeIcon className={`mb-1 mr-2`} />
                 <Link href="/">
-                  <a className={``}>トップページ</a>
+                  <a>トップページ</a>
                 </Link>
               </li>
               <li>
                 <MenuBookIcon className={`mb-1 mr-2`} />
                 <Link href="/catalog">
-                  <a>カタログ</a>
+                  <a>WEBカタログ</a>
                 </Link>
               </li>
               <li>
@@ -35,7 +36,10 @@ const Header: React.FC = () => {
               </li>
             </ul>
           </nav>
-          <div className={`hidden text-xs md:block`}>© 2021 DAIMARU-HAKUI.</div>
+          <div className={`block lg:hidden`}>
+            <TemporaryDrawer />
+          </div>
+          <div className={`hidden text-xs lg:block`}>© 2021 DAIMARU-HAKUI.</div>
         </div>
       </div>
     </>
