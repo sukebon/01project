@@ -1,0 +1,31 @@
+.formInput,
+.formTextArea {
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  @media screen and (min-width: 1028px) {
+    width: 400px;
+    margin-top: 0;
+  }
+}
+.formInput {
+  height: 40px;
+}
+.formTextArea {
+  height: 140px;
+}
+.formBox,
+.formBoxSecond {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  @media screen and (min-width: 1028px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.formBox {
+  @media screen and (min-width: 1028px) {
+    align-items: center;
+  }
+}

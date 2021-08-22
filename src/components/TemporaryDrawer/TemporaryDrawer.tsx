@@ -68,7 +68,7 @@ export default function TemporaryDrawer() {
             <MailIcon />
           </ListItemIcon>
           <ListItemText>
-            <Link href="/">
+            <Link href="/contact">
               <a>お問い合わせ</a>
             </Link>
           </ListItemText>

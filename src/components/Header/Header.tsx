@@ -4,7 +4,7 @@ import Styles from "./Header.module.scss";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import LocalPostOfficeIcon from "@material-ui/icons/LocalPostOffice";
-import TemporaryDrawer from "components/TemporaryDrawer";
+import TemporaryDrawer from "components/TemporaryDrawer/TemporaryDrawer";
 
 const Header: React.FC = () => {
   return (
@@ -13,7 +13,10 @@ const Header: React.FC = () => {
         <div
           className={`flex items-center justify-between h-24 p-6 lg:flex-col lg:justify-start lg:items-center lg:h-screen lg:fixed lg:p-4 lg:mt-12 lg:w-72`}
         >
-          <div className={`text-2xl font-shinppori`}>DAIMARU HAKUI</div>
+          <div className={`text-2xl font-shinppori`}>
+            <Link href="/">DAIMARU HAKUI</Link>
+          </div>
+
           <nav className={`hidden lg:block my-16`}>
             <ul className={`${Styles.list}`}>
               <li>
@@ -30,7 +33,7 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <LocalPostOfficeIcon className={`mb-1 mr-2`} />
-                <Link href="/">
+                <Link href="/contact">
                   <a>お問い合わせ</a>
                 </Link>
               </li>
