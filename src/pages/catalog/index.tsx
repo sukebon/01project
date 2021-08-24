@@ -13,14 +13,33 @@ import Styles from "./index.module.scss";
 import Head from "next/head";
 
 const Catalog: React.FC<Props> = (props) => {
-  const { apiData, listCategory } = props;
+  const { apiData, listCategory, listCompany } = props;
+
+  //オブジェクトにkanaを追加
+  useEffect(() => {
+    apiData.map((value: any) => {
+      return listCompany.map((v: any) => {
+        if (value.maker == v.maker) {
+          return (value.kana = v.kana);
+        }
+      });
+    });
+    apiData.sort((a: any, b: any) => {
+      if (a.kana > b.kana) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const [catalogs, setCatalogs] = useState(apiData);
   const [seasonList, setSeasonList] = useState([]);
   const [makerList, setMakerList] = useState([]);
   const [categoryValue, setCategoryValue] = useState("");
   const [seasonValue, setSeasonValue] = useState("");
   const [makerValue, setMakerValue] = useState("");
-
   //seasonの重複を削除
   useEffect(() => {
     const seasonData = catalogs.map((value) => {
@@ -225,26 +244,46 @@ export async function getStaticProps() {
       "X-API-KEY": apiKey,
     },
   };
-  const [resCatalogs, resCategoryLists] = await Promise.all([
+  const [resCatalogs, resCategoryLists, resCompany] = await Promise.all([
     await fetch(`${url}/catalog?limit=250`, params),
     await fetch(`${url}/catalog-category?limit=50`, params),
+    await fetch(`${url}/company?limit=100`, params),
   ]);
 
   const dataCatalogs = await resCatalogs.json();
+  const dataCategoryLists = await resCategoryLists.json();
+  const dataCompanyLists = await resCompany.json();
   if (!dataCatalogs) return { notFound: true };
+  if (!dataCategoryLists) return { notFound: true };
+  if (!dataCompanyLists) return { notFound: true };
 
-  let filterData = dataCatalogs.contents.filter((content: any) => {
+  let apiData = dataCatalogs.contents.filter((content: any) => {
     return content.transaction === true;
   });
-  const apiData = filterData;
+  let listCompany = dataCompanyLists.contents;
 
-  const dataCategoryLists = await resCategoryLists.json();
-  if (!dataCategoryLists) return { notFound: true };
+  // apiData.forEach((value: any) => {
+  //   apiData = listCompany.map((v: any) => {
+  //     if (value.maker == v.maker) {
+  //       return (value.kana = v.kana || null);
+  //     } else {
+  //       return value;
+  //     }
+  //   });
+  // });
+
+  apiData = apiData.sort((a: any, b: any) => {
+    if (a.kana > b.kana) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
 
   let listCategory = dataCategoryLists.contents;
 
   return {
-    props: { apiData, listCategory },
+    props: { apiData, listCategory, listCompany },
   };
 }
 
@@ -265,6 +304,7 @@ type Props = {
       height: number;
       width: number;
     };
+    kana: string;
     transaction: boolean;
   }[];
   listCategory: {
@@ -274,5 +314,16 @@ type Props = {
     publishedAt: string;
     key: string;
     value: string;
+  }[];
+
+  listCompany: {
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    revisedAt: string;
+    maker: string;
+    kana: string;
+    link: string;
   }[];
 };

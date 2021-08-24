@@ -88,7 +88,7 @@ const Contact: React.FC = () => {
           メールでのお問い合わせは下記フォームにてどうぞ。
         </p>
         <div
-          className={`flex w-11/12 border rounded-md mt-6 p-6 lg:p-12 lg:w-7/12`}
+          className={`flex w-11/12 border rounded-md my-6 p-6 max-w-screen-sm lg:p-12 lg:w-10/12`}
         >
           <form className={`${Styles.form} w-full`}>
             <h2 className={`mb-7 text-center`}>
@@ -198,20 +198,20 @@ const Contact: React.FC = () => {
                   variant="contained"
                   color="default"
                   onClick={handleClick}
-                  endIcon={<SendIcon />}
                   disabled={disableSend}
                 >
                   <strong>　送信する　</strong>
+                  <SendIcon />
                 </Button>
               </div>
               <div className={`m-2`}>
                 <Button
                   variant="contained"
                   color="default"
-                  endIcon={<ClearIcon />}
                   onClick={handleCanceled}
                 >
                   <strong>キャンセル</strong>
+                  <ClearIcon />
                 </Button>
               </div>
             </div>
