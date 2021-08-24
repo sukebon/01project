@@ -43,7 +43,7 @@ const CatalogCard: React.FC<any> = ({ catalogs }) => {
               </CardMedia>
               <CardContent>
                 <h3
-                  className={`text-sm tracking-tighter text-gray-900 whitespace-pre overflow-ellipsis`}
+                  className={`text-sm tracking-tighter text-gray-900 overflow-hidden whitespace-pre overflow-ellipsis`}
                 >
                   {catalog.title}
                   <span className={`ml-2 `}>{catalog.year}</span>
