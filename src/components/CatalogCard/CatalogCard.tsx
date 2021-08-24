@@ -17,7 +17,12 @@ const CatalogCard: React.FC<any> = ({ catalogs }) => {
           style={{ width: "270px", margin: "0.5rem" }}
           className={`${Styels.root}`}
         >
-          <Link href={catalog.link} target="_blank" className={`no-underline`}>
+          <Link
+            href={catalog.link}
+            target="_blank"
+            rel="noopener"
+            className={`no-underline`}
+          >
             <CardActionArea>
               <CardMedia title={catalog.title}>
                 <picture>
