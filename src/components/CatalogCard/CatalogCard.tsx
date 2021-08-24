@@ -27,14 +27,17 @@ const CatalogCard: React.FC<any> = ({ catalogs }) => {
               <CardMedia title={catalog.title}>
                 <picture>
                   <source
-                    srcSet={catalog.image.url + "?fm=webp&fit&w=270&h=355"}
+                    srcSet={catalog.image.url + "?fm=webp&fit=max&w=270&h=355"}
                     type="image/webp"
                     style={{ height: "355px", width: "270px" }}
+                    className={`object-cover`}
                   />
                   <img
-                    src={catalog.image.url + "?fit&w=270&h=355"}
+                    src={catalog.image.url + "?fit=max&w=270&h=355"}
                     alt={catalog.title}
                     style={{ height: "355px", width: "270px" }}
+                    loading="lazy"
+                    className={`object-cover`}
                   />
                 </picture>
               </CardMedia>
