@@ -19,11 +19,20 @@ const CatalogCard: React.FC<any> = ({ catalogs }) => {
         >
           <Link href={catalog.link} target="_blank" className={`no-underline`}>
             <CardActionArea>
-              <CardMedia
-                image={catalog.image.url}
-                title={catalog.title}
-                style={{ height: "355px" }}
-              />
+              <CardMedia title={catalog.title}>
+                <picture>
+                  <source
+                    srcSet={catalog.image.url + "?fm=webp&crop&w=270&h=355"}
+                    type="image/webp"
+                    style={{ height: "355px", width: "270px" }}
+                  />
+                  <img
+                    src={catalog.image.url + "?crop&w=270&h=355"}
+                    alt={catalog.title}
+                    style={{ height: "355px", width: "270px" }}
+                  />
+                </picture>
+              </CardMedia>
               <CardContent>
                 <h3
                   className={`text-sm tracking-tighter text-gray-900 whitespace-pre overflow-ellipsis`}
