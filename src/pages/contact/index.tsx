@@ -193,25 +193,25 @@ const Contact: React.FC = () => {
               className={`flex flex-col items-center justify-center lg:flex-row`}
             >
               <div className={`m-2`}>
-                <Button
+                {/* <Button
                   variant="contained"
                   color="default"
                   onClick={handleClick}
                   disabled={disableSend}
+                  endIcon={<SendIcon />}
                 >
                   <strong>　送信する　</strong>
-                  <SendIcon />
-                </Button>
+                </Button> */}
               </div>
               <div className={`m-2`}>
-                {/* <Button
-                  // variant="contained"
-                  // color="default"
+                <Button
+                  variant="contained"
+                  color="default"
                   onClick={handleCanceled}
+                  endIcon={<ClearIcon />}
                 >
                   <strong>キャンセル</strong>
-                  <ClearIcon />
-                </Button> */}
+                </Button>
               </div>
             </div>
           </form>
