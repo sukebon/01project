@@ -49,8 +49,7 @@ const Contact: React.FC = () => {
     }
   };
 
-  const handleClick = (e: any) => {
-    e.preventDefault();
+  const handleClick = () => {
     sendMail();
   };
 
@@ -196,7 +195,7 @@ const Contact: React.FC = () => {
                 <Button
                   variant="contained"
                   color="default"
-                  onClick={(e) => handleClick(e)}
+                  onClick={handleClick}
                   disabled={disableSend}
                   endIcon={<SendIcon />}
                 >
