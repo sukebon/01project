@@ -15,44 +15,11 @@ const Contact: React.FC = () => {
   const [title, setTitle] = useState(""); // 「件名」
   const [message, setMessage] = useState(""); // 「お問い合わせ内容」
 
-  // const sendMail = () => {
-  //   const userID = "user_7yd9EbIQJSbzjqGUXUbJt";
-  //   const serviceID = "service_764mpxv";
-  //   const templateID = "template_gii3nlf";
-  //   if (
-  //     userID !== undefined &&
-  //     serviceID !== undefined &&
-  //     templateID !== undefined
-  //   ) {
-  //     init(userID);
-
-  //     const template_param = {
-  //       from_name: name,
-  //       company: company,
-  //       from_email: mail,
-  //       tel: tel,
-  //       fax: fax,
-  //       title: title,
-  //       message: message,
-  //     };
-  //     send(serviceID, templateID, template_param).then(() => {
-  //       window.alert("お問い合わせを送信致しました。");
-
-  //       setName("");
-  //       setCompany("");
-  //       setTel("");
-  //       setFax("");
-  //       setMail("");
-  //       setMessage("");
-  //       setTitle("");
-  //     });
-  //   }
-  // };
-
-  const handleClick = () => {
+  const sendMail = () => {
     const userID = "user_7yd9EbIQJSbzjqGUXUbJt";
     const serviceID = "service_764mpxv";
     const templateID = "template_gii3nlf";
+    console.log("aaa");
     if (
       userID !== undefined &&
       serviceID !== undefined &&
@@ -81,6 +48,11 @@ const Contact: React.FC = () => {
         setTitle("");
       });
     }
+  };
+
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    sendMail();
   };
 
   const handleCanceled = () => {
@@ -118,7 +90,7 @@ const Contact: React.FC = () => {
         <div
           className={`flex w-11/12 border rounded-md my-6 p-6 max-w-screen-sm lg:p-12 lg:w-10/12`}
         >
-          <form className={`${Styles.form} w-full`}>
+          <form onSubmit={handleClick} className={`${Styles.form} w-full`}>
             <h2 className={`mb-7 text-center`}>
               ※<span className={`text-red-600`}>（必須）</span>
               の項目は、必ずすべてご記入ください。
@@ -147,7 +119,6 @@ const Contact: React.FC = () => {
                 className={`${Styles.formInput}`}
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
-                required
               />
             </div>
             <div className={`${Styles.formBox}`}>
@@ -160,7 +131,6 @@ const Contact: React.FC = () => {
                 className={`${Styles.formInput}`}
                 value={tel}
                 onChange={(e) => setTel(e.target.value)}
-                required
               />
             </div>
             <div className={`${Styles.formBox}`}>
@@ -173,7 +143,6 @@ const Contact: React.FC = () => {
                 className={`${Styles.formInput}`}
                 value={fax}
                 onChange={(e) => setFax(e.target.value)}
-                required
               />
             </div>
             <div className={`${Styles.formBox}`}>
@@ -223,9 +192,10 @@ const Contact: React.FC = () => {
             >
               <div className={`m-2`}>
                 <Button
+                  type="submit"
                   variant="contained"
                   color="default"
-                  onClick={handleClick}
+                  // onClick={handleClick}
                   disabled={disableSend}
                   endIcon={<SendIcon />}
                 >
