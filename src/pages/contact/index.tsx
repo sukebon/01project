@@ -196,7 +196,7 @@ const Contact: React.FC = () => {
                 <Button
                   variant="contained"
                   color="default"
-                  // onClick={handleClick}
+                  onClick={(e) => handleClick(e)}
                   disabled={disableSend}
                   endIcon={<SendIcon />}
                 >
