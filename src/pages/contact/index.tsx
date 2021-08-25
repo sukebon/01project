@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import Styles from "./index.module.scss";
+import Head from "next/head";
 import { init, send } from "emailjs-com";
 import { Button } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import ClearIcon from "@material-ui/icons/Clear";
-import Styles from "./index.module.scss";
-import Head from "next/head";
 
 const Contact: React.FC = () => {
   const [name, setName] = useState(""); // 「お名前」
@@ -19,7 +19,6 @@ const Contact: React.FC = () => {
     const userID = "user_7yd9EbIQJSbzjqGUXUbJt";
     const serviceID = "service_764mpxv";
     const templateID = "template_gii3nlf";
-    console.log(userID);
     if (
       userID !== undefined &&
       serviceID !== undefined &&
@@ -124,7 +123,7 @@ const Contact: React.FC = () => {
             </div>
             <div className={`${Styles.formBox}`}>
               <div>
-                <label htmlFor="companyNameForm">電話番号</label>
+                <label htmlFor="telForm">電話番号</label>
               </div>
               <input
                 type="text"
@@ -137,7 +136,7 @@ const Contact: React.FC = () => {
             </div>
             <div className={`${Styles.formBox}`}>
               <div>
-                <label htmlFor="companyNameForm">FAX番号</label>
+                <label htmlFor="faxForm">FAX番号</label>
               </div>
               <input
                 type="text"
@@ -195,8 +194,8 @@ const Contact: React.FC = () => {
             >
               <div className={`m-2`}>
                 <Button
-                  variant="contained"
-                  color="default"
+                  // variant="contained"
+                  // color="default"
                   onClick={handleClick}
                   disabled={disableSend}
                 >
@@ -206,8 +205,8 @@ const Contact: React.FC = () => {
               </div>
               <div className={`m-2`}>
                 <Button
-                  variant="contained"
-                  color="default"
+                  // variant="contained"
+                  // color="default"
                   onClick={handleCanceled}
                 >
                   <strong>キャンセル</strong>
