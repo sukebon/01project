@@ -193,7 +193,7 @@ const Contact: React.FC = () => {
               className={`flex flex-col items-center justify-center lg:flex-row`}
             >
               <div className={`m-2`}>
-                <Button
+                {/* <Button
                   // variant="contained"
                   // color="default"
                   onClick={handleClick}
@@ -201,17 +201,17 @@ const Contact: React.FC = () => {
                 >
                   <strong>　送信する　</strong>
                   <SendIcon />
-                </Button>
+                </Button> */}
               </div>
               <div className={`m-2`}>
-                <Button
+                {/* <Button
                   // variant="contained"
                   // color="default"
                   onClick={handleCanceled}
                 >
                   <strong>キャンセル</strong>
                   <ClearIcon />
-                </Button>
+                </Button> */}
               </div>
             </div>
           </form>
