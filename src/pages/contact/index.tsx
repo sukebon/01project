@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Styles from "./index.module.scss";
 import Head from "next/head";
-import { init, send } from "emailjs-com";
 import { Button } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import ClearIcon from "@material-ui/icons/Clear";
+import { init, send } from "emailjs-com";
 
 const Contact: React.FC = () => {
   const [name, setName] = useState(""); // 「お名前」
@@ -15,7 +15,41 @@ const Contact: React.FC = () => {
   const [title, setTitle] = useState(""); // 「件名」
   const [message, setMessage] = useState(""); // 「お問い合わせ内容」
 
-  const sendMail = () => {
+  // const sendMail = () => {
+  //   const userID = "user_7yd9EbIQJSbzjqGUXUbJt";
+  //   const serviceID = "service_764mpxv";
+  //   const templateID = "template_gii3nlf";
+  //   if (
+  //     userID !== undefined &&
+  //     serviceID !== undefined &&
+  //     templateID !== undefined
+  //   ) {
+  //     init(userID);
+
+  //     const template_param = {
+  //       from_name: name,
+  //       company: company,
+  //       from_email: mail,
+  //       tel: tel,
+  //       fax: fax,
+  //       title: title,
+  //       message: message,
+  //     };
+  //     send(serviceID, templateID, template_param).then(() => {
+  //       window.alert("お問い合わせを送信致しました。");
+
+  //       setName("");
+  //       setCompany("");
+  //       setTel("");
+  //       setFax("");
+  //       setMail("");
+  //       setMessage("");
+  //       setTitle("");
+  //     });
+  //   }
+  // };
+
+  const handleClick = () => {
     const userID = "user_7yd9EbIQJSbzjqGUXUbJt";
     const serviceID = "service_764mpxv";
     const templateID = "template_gii3nlf";
@@ -47,10 +81,6 @@ const Contact: React.FC = () => {
         setTitle("");
       });
     }
-  };
-
-  const handleClick = () => {
-    sendMail();
   };
 
   const handleCanceled = () => {
