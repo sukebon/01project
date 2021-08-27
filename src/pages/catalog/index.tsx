@@ -230,6 +230,7 @@ const Catalog: React.FC<Props> = (props) => {
           color="secondary"
           startIcon={<ClearIcon />}
           onClick={onClickReset}
+          aria-label="reset button"
         >
           Reset
         </Button>

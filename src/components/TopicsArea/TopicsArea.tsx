@@ -39,6 +39,7 @@ const TopicsArea = () => {
           <Button
             onClick={onClickClose}
             style={{ position: "absolute", top: 5, right: 5 }}
+            aria-label="close button"
           >
             close
           </Button>
@@ -58,7 +59,7 @@ const TopicsArea = () => {
             : { transform: "translateY(100%)" }
         }
       >
-        <Button onClick={onClickOpen}>
+        <Button onClick={onClickOpen} aria-label="topics button">
           <AnnouncementIcon fontSize={"large"} />
         </Button>
       </div>
