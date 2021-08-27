@@ -148,7 +148,10 @@ const Catalog: React.FC<Props> = (props) => {
       >
         <div className={`${Styles.formArea}`}>
           <FormControl variant="outlined" className={`w-full lg:w-56`}>
-            <InputLabel id="demo-simple-select-outlined-label">
+            <InputLabel
+              id="demo-simple-select-outlined-label"
+              aria-labelledby="select category"
+            >
               Category
             </InputLabel>
             <Select
@@ -171,7 +174,10 @@ const Catalog: React.FC<Props> = (props) => {
         </div>
         <div className={`${Styles.formArea}`}>
           <FormControl variant="outlined" className={`w-full lg:w-56`}>
-            <InputLabel id="demo-simple-select-outlined-label">
+            <InputLabel
+              id="demo-simple-select-outlined-label"
+              aria-labelledby="select season"
+            >
               Season
             </InputLabel>
             <Select
@@ -194,7 +200,10 @@ const Catalog: React.FC<Props> = (props) => {
         </div>
         <div className={`${Styles.formArea}`}>
           <FormControl variant="outlined" className={`w-full lg:w-56`}>
-            <InputLabel id="demo-simple-select-outlined-label">
+            <InputLabel
+              id="demo-simple-select-outlined-label"
+              aria-labelledby="select maker"
+            >
               maker
             </InputLabel>
             <Select

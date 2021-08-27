@@ -82,7 +82,7 @@ export default function TemporaryDrawer() {
     <div>
       <React.Fragment>
         <Button onClick={toggleDrawer("left", true)}>
-          <MenuIcon />
+          <MenuIcon aria-label={`ドロワーメニュー`} />
         </Button>
         <Drawer
           anchor={"left"}
