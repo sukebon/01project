@@ -9,9 +9,9 @@ import TemporaryDrawer from "components/TemporaryDrawer/TemporaryDrawer";
 const Header: React.FC = () => {
   return (
     <>
-      <div className={`w-full bg-white shadow-md lg:w-72 lg:min-h-full `}>
+      <div className={`w-full bg-white shadow-md lg:w-72 lg:min-h-full`}>
         <div
-          className={`flex items-center justify-between h-24 p-6 lg:flex-col lg:justify-start lg:items-center lg:h-screen lg:fixed lg:p-4 lg:mt-12 lg:w-72`}
+          className={`flex items-center justify-between h-24 p-6 lg:flex-col lg:justify-start lg:items-center lg:h-screen lg:sticky lg:top-0 lg:px-4 lg:pt-12 lg:w-72`}
         >
           <div className={`text-2xl font-shinppori`}>
             <Link href="/">DAIMARU HAKUI</Link>

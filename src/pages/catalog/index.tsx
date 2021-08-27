@@ -11,6 +11,7 @@ import ClearIcon from "@material-ui/icons/Clear";
 import CatalogCard from "../../components/CatalogCard/CatalogCard";
 import Styles from "./index.module.scss";
 import Head from "next/head";
+import TopicsArea from "components/TopicsArea/TopicsArea";
 
 const Catalog: React.FC<Props> = (props) => {
   const { apiData, listCategory, listCompany } = props;
