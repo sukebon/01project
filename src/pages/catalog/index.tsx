@@ -156,7 +156,7 @@ const Catalog: React.FC<Props> = (props) => {
             </InputLabel>
             <Select
               labelId="demo-simple-select-category-label"
-              id="demo-simple-select-outlined"
+              // id="demo-simple-select-outlined"
               value={categoryValue}
               onChange={onChangeCategory}
               label="category"
@@ -182,7 +182,7 @@ const Catalog: React.FC<Props> = (props) => {
             </InputLabel>
             <Select
               labelId="demo-simple-select-season-label"
-              id="demo-simple-select-outlined"
+              // id="demo-simple-select-outlined"
               value={seasonValue}
               onChange={onChangeSeason}
               label="season"
@@ -208,7 +208,7 @@ const Catalog: React.FC<Props> = (props) => {
             </InputLabel>
             <Select
               labelId="demo-simple-select-maker-label"
-              id="demo-simple-select-maker"
+              // id="demo-simple-select-maker"
               value={makerValue}
               onChange={onChangeMaker}
               label="maker"
