@@ -149,13 +149,13 @@ const Catalog: React.FC<Props> = (props) => {
         <div className={`${Styles.formArea}`}>
           <FormControl variant="outlined" className={`w-full lg:w-56`}>
             <InputLabel
-              id="demo-simple-select-outlined-label"
+              id="demo-simple-select-category-label"
               aria-labelledby="select category"
             >
               Category
             </InputLabel>
             <Select
-              labelId="demo-simple-select-outlined-label"
+              labelId="demo-simple-select-category-label"
               id="demo-simple-select-outlined"
               value={categoryValue}
               onChange={onChangeCategory}
@@ -175,13 +175,13 @@ const Catalog: React.FC<Props> = (props) => {
         <div className={`${Styles.formArea}`}>
           <FormControl variant="outlined" className={`w-full lg:w-56`}>
             <InputLabel
-              id="demo-simple-select-outlined-label"
+              id="demo-simple-select-season-label"
               aria-labelledby="select season"
             >
               Season
             </InputLabel>
             <Select
-              labelId="demo-simple-select-outlined-label"
+              labelId="demo-simple-select-season-label"
               id="demo-simple-select-outlined"
               value={seasonValue}
               onChange={onChangeSeason}
@@ -201,14 +201,14 @@ const Catalog: React.FC<Props> = (props) => {
         <div className={`${Styles.formArea}`}>
           <FormControl variant="outlined" className={`w-full lg:w-56`}>
             <InputLabel
-              id="demo-simple-select-outlined-label"
+              id="demo-simple-select-maker-label"
               aria-labelledby="select maker"
             >
               maker
             </InputLabel>
             <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
+              labelId="demo-simple-select-maker-label"
+              id="demo-simple-select-maker"
               value={makerValue}
               onChange={onChangeMaker}
               label="maker"
