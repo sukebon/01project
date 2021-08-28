@@ -43,7 +43,7 @@ const MessageArea: React.FC = () => {
           <div key={value.id} className={`w-full flex flex-col items-center`}>
             {flag ? (
               <p className={`${Styles.text} px-2 pb-2`}>
-                <Link href={value.link} target="_blank">
+                <Link href={value.link} target="_blank" rel="noopener">
                   {`${value.maker} : ${value.title}`}
                 </Link>
               </p>
@@ -51,7 +51,7 @@ const MessageArea: React.FC = () => {
               <>
                 {topicsData[0].id == value.id && (
                   <p className={`${Styles.text} px-2`}>
-                    <Link href={value.link} target="_blank">
+                    <Link href={value.link} target="_blank" rel="noopener">
                       {`${value.maker} : ${value.title}`}
                     </Link>
                   </p>

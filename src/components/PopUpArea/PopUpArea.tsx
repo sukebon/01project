@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Button } from "@material-ui/core";
 import AnnouncementIcon from "@material-ui/icons/Announcement";
 import CloseIcon from "@material-ui/icons/Close";
 import Styles from "./PopUpArea.module.scss";
@@ -55,7 +54,6 @@ const TopicsArea = () => {
       {buttonFlag == true ? (
         <div
           onClick={onClickOpen}
-          aria-label="popup button"
           className={`${Styles.button} bg-white shadow-md`}
         >
           <AnnouncementIcon fontSize={"large"} />
@@ -63,7 +61,6 @@ const TopicsArea = () => {
       ) : (
         <div
           onClick={onClickClose}
-          aria-label="popup button"
           className={`${Styles.button} bg-white shadow-md`}
         >
           <CloseIcon fontSize={"large"} />
