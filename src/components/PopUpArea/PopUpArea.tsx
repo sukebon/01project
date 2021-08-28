@@ -41,7 +41,11 @@ const TopicsArea = () => {
   return (
     <>
       <div
-        style={topicFlag == true ? { opacity: "1" } : { opacity: "0" }}
+        style={
+          topicFlag == true
+            ? { opacity: "1", display: "block" }
+            : { opacity: "0", display: "none" }
+        }
         className={`${Styles.box} rounded shadow-sm bg-white w-11/12 md:w-auto md:max-w-sm`}
       >
         <div className={`p-6`}>

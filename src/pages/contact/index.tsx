@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Styles from "./index.module.scss";
 import Head from "next/head";
 import { Button } from "@material-ui/core";
