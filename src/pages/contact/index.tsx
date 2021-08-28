@@ -4,7 +4,7 @@ import Head from "next/head";
 import { Button } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import ClearIcon from "@material-ui/icons/Clear";
-import { init, send } from "emailjs-com";
+import emailjs from "emailjs-com";
 
 const Contact: React.FC = () => {
   const [name, setName] = useState(""); // 「お名前」
@@ -15,28 +15,14 @@ const Contact: React.FC = () => {
   const [title, setTitle] = useState(""); // 「件名」
   const [message, setMessage] = useState(""); // 「お問い合わせ内容」
 
-  const sendMail = () => {
+  const sendMail = (e: any) => {
     const userID = "user_7yd9EbIQJSbzjqGUXUbJt";
     const serviceID = "service_764mpxv";
     const templateID = "template_gii3nlf";
-    console.log("aaa");
-    if (
-      userID !== undefined &&
-      serviceID !== undefined &&
-      templateID !== undefined
-    ) {
-      init(userID);
 
-      const template_param = {
-        from_name: name,
-        company: company,
-        from_email: mail,
-        tel: tel,
-        fax: fax,
-        title: title,
-        message: message,
-      };
-      send(serviceID, templateID, template_param).then(() => {
+    emailjs
+      .sendForm(serviceID, templateID, e.target, userID)
+      .then(() => {
         window.alert("お問い合わせを送信致しました。");
 
         setName("");
@@ -46,13 +32,15 @@ const Contact: React.FC = () => {
         setMail("");
         setMessage("");
         setTitle("");
+      })
+      .catch((error) => {
+        window.alert(error.text);
       });
-    }
   };
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    sendMail();
+    sendMail(e);
   };
 
   const handleCanceled = () => {
@@ -97,93 +85,93 @@ const Contact: React.FC = () => {
             </h2>
             <div className={`${Styles.formBox}`}>
               <div>
-                <label htmlFor="nameForm">
+                <label>
                   お名前<span className={`text-red-600`}>（必須）</span>
                 </label>
               </div>
               <input
                 type="text"
-                id="nameForm"
                 className={`${Styles.formInput}`}
                 value={name}
+                name="from_name"
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className={`${Styles.formBox}`}>
               <div>
-                <label htmlFor="companyNameForm">会社名</label>
+                <label>会社名</label>
               </div>
               <input
                 type="text"
-                id="companyNameForm"
                 className={`${Styles.formInput}`}
                 value={company}
+                name="company"
                 onChange={(e) => setCompany(e.target.value)}
               />
             </div>
             <div className={`${Styles.formBox}`}>
               <div>
-                <label htmlFor="telForm">電話番号</label>
+                <label>電話番号</label>
               </div>
               <input
                 type="text"
-                id="telForm"
                 className={`${Styles.formInput}`}
                 value={tel}
+                name="tel"
                 onChange={(e) => setTel(e.target.value)}
               />
             </div>
             <div className={`${Styles.formBox}`}>
               <div>
-                <label htmlFor="faxForm">FAX番号</label>
+                <label>FAX番号</label>
               </div>
               <input
                 type="text"
-                id="faxForm"
                 className={`${Styles.formInput}`}
                 value={fax}
+                name="fax"
                 onChange={(e) => setFax(e.target.value)}
               />
             </div>
             <div className={`${Styles.formBox}`}>
               <div>
-                <label htmlFor="mailForm">
+                <label>
                   メールアドレス<span className={`text-red-600`}>（必須）</span>
                 </label>
               </div>
               <input
                 type="email"
-                id="mailForm"
                 className={`${Styles.formInput}`}
                 value={mail}
+                name="from_email"
                 onChange={(e) => setMail(e.target.value)}
               />
             </div>
             <div className={`${Styles.formBox}`}>
               <div>
-                <label htmlFor="mailTitleForm">
+                <label>
                   件名<span className={`text-red-600`}>（必須）</span>
                 </label>
               </div>
               <input
                 type="text"
-                id="mailTitleForm"
                 className={`${Styles.formInput}`}
                 value={title}
+                name="title"
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
             <div className={`${Styles.formBoxSecond}`}>
               <div>
-                <label htmlFor="mailContentForm">
+                <label>
                   お問い合わせ内容
                   <span className={`text-red-600`}>（必須）</span>
                 </label>
               </div>
               <textarea
-                id="mailContentForm"
                 className={`${Styles.formTextArea}`}
                 value={message}
+                name="message"
                 onChange={(e) => setMessage(e.target.value)}
               />
             </div>
@@ -195,7 +183,6 @@ const Contact: React.FC = () => {
                   type="submit"
                   variant="contained"
                   color="default"
-                  // onClick={handleClick}
                   disabled={disableSend}
                   endIcon={<SendIcon />}
                 >

@@ -35,7 +35,7 @@ export default function TemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <div
-      className={`w-72`}
+      className={`w-64`}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}

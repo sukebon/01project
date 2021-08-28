@@ -1,15 +1,29 @@
 import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import AnnouncementIcon from "@material-ui/icons/Announcement";
+import CloseIcon from "@material-ui/icons/Close";
 import Styles from "./PopUpArea.module.scss";
+import axios from "axios";
 
 const TopicsArea = () => {
+  useEffect(() => {
+    axios
+      .get("https://daimaru-hakui.microcms.io/api/v1/popup", {
+        headers: {
+          "X-API-KEY": "3c62454d-9a98-4e3d-aee1-d337c3bbdf7e",
+        },
+      })
+      .then((res) => {
+        setMesssage(res.data.message);
+      });
+  }, []);
+  const [messsage, setMesssage] = useState("");
   const [topicFlag, setTopicFlag] = useState(false);
-  const [buttonFlag, setButtonFlag] = useState(false);
+  const [buttonFlag, setButtonFlag] = useState(true);
 
   const fadeIn = () => {
-    console.log(topicFlag);
     setTopicFlag(true);
+    setButtonFlag(false);
   };
   const onClickClose = () => {
     setTopicFlag(false);
@@ -28,41 +42,33 @@ const TopicsArea = () => {
   return (
     <>
       <div
-        style={
-          topicFlag == true
-            ? { transform: "translateY(0px)" }
-            : { transform: "translateY(100%)" }
-        }
-        className={`${Styles.transition} fixed bottom-0 right-0 z-50 border rounded-t shadow-sm bg-white w-full md:max-w-sm`}
+        style={topicFlag == true ? { opacity: "1" } : { opacity: "0" }}
+        className={`${Styles.box} rounded shadow-sm bg-white w-11/12 md:w-auto md:max-w-sm`}
       >
-        <div className={`py-12 px-6`}>
-          <Button
-            onClick={onClickClose}
-            style={{ position: "absolute", top: 5, right: 5 }}
-            aria-label="close button"
-          >
-            close
-          </Button>
-
-          <ul>
-            <li>
-              テキストテキストテキストテキストテキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキス
-            </li>
-          </ul>
+        <div className={`p-6`}>
+          <div>
+            <div dangerouslySetInnerHTML={{ __html: messsage }}></div>
+          </div>
         </div>
       </div>
-      <div
-        className={`${Styles.button} bg-white rounded-xl shadow-md`}
-        style={
-          buttonFlag === true
-            ? { transform: "translateY(-20px)" }
-            : { transform: "translateY(100%)" }
-        }
-      >
-        <Button onClick={onClickOpen} aria-label="popup button">
+
+      {buttonFlag == true ? (
+        <div
+          onClick={onClickOpen}
+          aria-label="popup button"
+          className={`${Styles.button} bg-white shadow-md`}
+        >
           <AnnouncementIcon fontSize={"large"} />
-        </Button>
-      </div>
+        </div>
+      ) : (
+        <div
+          onClick={onClickClose}
+          aria-label="popup button"
+          className={`${Styles.button} bg-white shadow-md`}
+        >
+          <CloseIcon fontSize={"large"} />
+        </div>
+      )}
     </>
   );
 };
