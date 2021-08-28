@@ -1,69 +1,87 @@
-import { useEffect, useState } from "react";
-import { Button } from "@material-ui/core";
-import AnnouncementIcon from "@material-ui/icons/Announcement";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Styles from "./TopicsArea.module.scss";
+import { Button, Link } from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 
-const TopicsArea = () => {
-  const [topicFlag, setTopicFlag] = useState(false);
-  const [buttonFlag, setButtonFlag] = useState(false);
+type axios = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
+  title: string;
+  link: string;
+  maker: string;
+}[];
 
-  const fadeIn = () => {
-    console.log(topicFlag);
-    setTopicFlag(true);
-  };
-  const onClickClose = () => {
-    setTopicFlag(false);
-    setButtonFlag(true);
-  };
-  const onClickOpen = () => {
-    setTopicFlag(true);
-    setButtonFlag(false);
-  };
+const MessageArea: React.FC = () => {
+  const [topicsData, setTopicsData] = useState<axios>([]);
+  const [dataId, setDataId] = useState([]);
+  const [flag, setFlag] = useState(false);
   useEffect(() => {
-    setTimeout(() => {
-      fadeIn();
-    }, 2000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    axios
+      .get("https://daimaru-hakui.microcms.io/api/v1/topics", {
+        headers: {
+          "X-API-KEY": "3c62454d-9a98-4e3d-aee1-d337c3bbdf7e",
+        },
+      })
+      .then((res) => {
+        const data = res.data.contents;
+        setTopicsData(data);
+
+        let idList: any = [];
+        data.map((value: any) => {
+          idList.push(value.id);
+        });
+        setDataId(idList);
+        console.log("1");
+      });
   }, []);
+
+  const onClickFlag = () => {
+    setFlag(!flag);
+  };
+
   return (
     <>
-      <div
-        style={
-          topicFlag == true
-            ? { transform: "translateY(0px)" }
-            : { transform: "translateY(100%)" }
-        }
-        className={`${Styles.transition} fixed bottom-0 right-0 z-50 border rounded-t shadow-sm bg-white w-full md:max-w-sm`}
-      >
-        <div className={`py-12 px-6`}>
-          <Button
-            onClick={onClickClose}
-            style={{ position: "absolute", top: 5, right: 5 }}
-            aria-label="close button"
-          >
-            close
-          </Button>
+      <div className="w-full py-2 flex flex-col justify-center items-center sticky bg-gray-800 text-white">
+        {topicsData.map((value) => (
+          <>
+            {flag ? (
+              <p key={value.id} className={`${Styles.text} px-2 pb-2`}>
+                <Link href={value.link} target="_blank">
+                  {`${value.maker} : ${value.title}`}
+                </Link>
+              </p>
+            ) : (
+              <>
+                {dataId[0] == value.id && (
+                  <p key={value.id} className={`${Styles.text} px-2`}>
+                    <Link href={value.link} target="_blank">
+                      {`${value.maker} : ${value.title}`}
+                    </Link>
+                  </p>
+                )}
+              </>
+            )}
+          </>
+        ))}
 
-          <ul>
-            <li>
-              テキストテキストテキストテキストテキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキステキストテキストテキストテキス
-            </li>
-          </ul>
+        <div
+          onClick={onClickFlag}
+          className={`${Styles.button} flex justify-center rounded-b bg-gray-800 w-16`}
+        >
+          {flag ? (
+            <ExpandLessIcon fontSize="small" />
+          ) : (
+            <ExpandMoreIcon fontSize="small" />
+          )}
         </div>
-      </div>
-      <div
-        className={`${Styles.transition} fixed bottom-0 right-5 z-40 bg-white rounded-xl shadow-md`}
-        style={
-          buttonFlag === true
-            ? { transform: "translateY(-20px)" }
-            : { transform: "translateY(100%)" }
-        }
-      >
-        <Button onClick={onClickOpen} aria-label="topics button">
-          <AnnouncementIcon fontSize={"large"} />
-        </Button>
       </div>
     </>
   );
 };
-export default TopicsArea;
+
+export default MessageArea;

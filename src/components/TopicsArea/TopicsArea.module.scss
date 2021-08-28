@@ -1,3 +1,20 @@
-.transition {
-  transition: 0.5s ease-in-out;
+.text {
+  transition: 0.1s;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  a {
+    color: white;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.button {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(90%);
+  cursor: pointer;
 }

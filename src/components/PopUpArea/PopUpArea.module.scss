@@ -1,0 +1,10 @@
+.transition {
+  transition: 0.5s ease-in-out;
+}
+.button {
+  transition: 0.5s ease-in-out;
+  position: fixed;
+  bottom: 0;
+  right: 5px;
+  z-index: 40;
+}
