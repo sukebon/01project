@@ -27,10 +27,8 @@ const NoticeArea: React.VFC = () => {
   }, []);
 
   return (
-    <div
-      className={`${Styles.container} overflow-hidden mt-10 p-1 mx-auto bg-white shadow-inner border rounded`}
-    >
-      <div className={`${Styles.lavel} px-2 text-white bg-gray-800 rounded-l`}>
+    <div className={`${Styles.container} overflow-hidden p-1 mx-auto bg-white`}>
+      <div className={`${Styles.lavel} px-2 text-white bg-gray-800`}>
         お知らせ
       </div>
       <ul className={`${Styles.ul} py-1`}>
