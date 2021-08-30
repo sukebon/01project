@@ -28,19 +28,17 @@ const MessageArea: React.FC = () => {
 
   return (
     <>
-      <div className="w-full h-10 flex flex-col justify-center items-center sticky bg-gray-800 text-white">
+      <div className="w-full h-10 flex justify-center items-center sticky bg-gray-800 text-white">
         {topicsData.map((value) => (
-          <div key={value.id} className={`w-full flex flex-col items-center`}>
-            <>
-              {topicsData[0].id == value.id && (
-                <p className={`${Styles.text} px-2`}>
-                  <Link href={value.link} target="_blank" rel="noopener">
-                    {`${value.maker} : ${value.title}`}
-                  </Link>
-                </p>
-              )}
-            </>
-          </div>
+          <>
+            {topicsData[0].id == value.id && (
+              <p key={value.id} className={`${Styles.text} px-2`}>
+                <Link href={value.link} target="_blank" rel="noopener">
+                  {`${value.maker} : ${value.title}`}
+                </Link>
+              </p>
+            )}
+          </>
         ))}
       </div>
     </>
