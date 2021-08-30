@@ -28,7 +28,7 @@ const MessageArea: React.FC = () => {
 
   return (
     <>
-      <div className="w-full py-2 flex flex-col justify-center items-center sticky bg-gray-800 text-white">
+      <div className="w-full h-10 flex flex-col justify-center items-center sticky bg-gray-800 text-white">
         {topicsData.map((value) => (
           <div key={value.id} className={`w-full flex flex-col items-center`}>
             <>

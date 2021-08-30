@@ -27,15 +27,13 @@ const NoticeArea: React.VFC = () => {
   }, []);
 
   return (
-    <div className={`${Styles.container} overflow-hidden p-1 mx-auto bg-white`}>
-      <div className={`${Styles.lavel} px-2 text-white bg-gray-800`}>
-        お知らせ
-      </div>
-      <ul className={`${Styles.ul} py-1`}>
+    <div className={`${Styles.container} overflow-hidden mx-auto bg-white`}>
+      <div className={`${Styles.lavel} text-white bg-gray-800`}>お知らせ</div>
+      <ul className={`${Styles.ul}`}>
         {noticeData.map((data) => (
-          <li key={data.id} className={`${Styles.li} py-1`}>
+          <li key={data.id} className={`${Styles.li}`}>
             <Link href={data.link}>
-              <a className={`text-gray-800`}>{data.title}</a>
+              <a>{data.title}</a>
             </Link>
           </li>
         ))}
