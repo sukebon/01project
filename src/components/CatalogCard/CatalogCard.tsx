@@ -48,7 +48,7 @@ const CatalogCard: React.FC<any> = ({ catalogs }) => {
                   {catalog.title}
                   <span className={`ml-2 `}>{catalog.year}</span>
                 </h3>
-                <div className={`text-sm text-gray-500`}>{catalog.maker}</div>
+                <div className={`text-sm text-gray-700`}>{catalog.maker}</div>
               </CardContent>
             </CardActionArea>
           </Link>

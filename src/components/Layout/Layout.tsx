@@ -13,7 +13,7 @@ const Layout: React.FC = (props) => {
         <header>
           <Header />
         </header>
-        <main className={`min-h-screen w-full`}>
+        <main className={`min-h-screen w-full overflow-hidden`}>
           {children}
           {/* <Footer /> */}
         </main>

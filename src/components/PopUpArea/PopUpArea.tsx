@@ -46,7 +46,7 @@ const TopicsArea = () => {
             ? { opacity: "1", visibility: "visible" }
             : { opacity: "0", visibility: "hidden" }
         }
-        className={`${Styles.box} rounded shadow-sm bg-white w-11/12 md:w-auto md:max-w-sm`}
+        className={`${Styles.box} shadow-md bg-white w-11/12 md:w-auto md:max-w-sm`}
       >
         <div className={`p-6`}>
           <div>

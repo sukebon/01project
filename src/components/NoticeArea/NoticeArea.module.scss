@@ -1,0 +1,38 @@
+.container {
+  position: relative;
+  width: 89%;
+  height: 40px;
+}
+.lavel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.ul {
+  padding-left: 100%;
+  margin: 0;
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrolltext 50s linear infinite;
+}
+
+.li {
+  margin: 0 100px 0 0;
+  display: inline;
+  &:nth-last-child(1) {
+    margin-right: 0;
+  }
+}
+
+@keyframes scrolltext {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

@@ -1,10 +1,10 @@
+import emailjs from "emailjs-com";
 import { useState } from "react";
 import Styles from "./index.module.scss";
 import Head from "next/head";
 import { Button } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import ClearIcon from "@material-ui/icons/Clear";
-import emailjs from "emailjs-com";
 
 const Contact: React.FC = () => {
   const [name, setName] = useState(""); // 「お名前」
