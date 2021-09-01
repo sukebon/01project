@@ -21,8 +21,12 @@ const MessageArea: React.FC = () => {
         },
       })
       .then((res) => {
-        const data = res.data.contents;
-        setTopicsData(data);
+        let data = res.data.contents;
+        let newData = [];
+        for (let i = 0; i < 1; i++) {
+          newData.push(data[i]);
+        }
+        setTopicsData(newData);
       });
   }, []);
 
@@ -30,15 +34,11 @@ const MessageArea: React.FC = () => {
     <>
       <div className="w-full h-10 flex justify-center items-center sticky bg-gray-800 text-white">
         {topicsData.map((value) => (
-          <>
-            {topicsData[0].id == value.id && (
-              <p key={value.id} className={`${Styles.text} px-2`}>
-                <Link href={value.link} target="_blank" rel="noopener">
-                  {`${value.maker} : ${value.title}`}
-                </Link>
-              </p>
-            )}
-          </>
+          <p key={value.id} className={`${Styles.text} px-2`}>
+            <Link href={value.link} target="_blank" rel="noopener">
+              {`${value.title}`}
+            </Link>
+          </p>
         ))}
       </div>
     </>

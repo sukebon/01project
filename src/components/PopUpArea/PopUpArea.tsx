@@ -18,20 +18,20 @@ const TopicsArea = () => {
   }, []);
   const [messsage, setMesssage] = useState("");
   const [topicFlag, setTopicFlag] = useState(false);
-  const [buttonFlag, setButtonFlag] = useState(true);
+  const [buttonFlag, setButtonFlag] = useState(false);
 
   const fadeIn = () => {
     setTopicFlag(true);
-    setButtonFlag(false);
+    setButtonFlag(true);
   };
   const onClickClose = () => {
     setTopicFlag(false);
-    setButtonFlag(true);
-  };
-  const onClickOpen = () => {
-    setTopicFlag(true);
     setButtonFlag(false);
   };
+  // const onClickOpen = () => {
+  //   setTopicFlag(true);
+  //   setButtonFlag(false);
+  // };
   useEffect(() => {
     setTimeout(() => {
       fadeIn();
@@ -46,7 +46,7 @@ const TopicsArea = () => {
             ? { opacity: "1", visibility: "visible" }
             : { opacity: "0", visibility: "hidden" }
         }
-        className={`${Styles.box} shadow-md bg-white w-11/12 md:w-auto md:max-w-sm`}
+        className={`${Styles.box} border shadow-md bg-white w-11/12 md:w-auto md:max-w-sm`}
       >
         <div className={`p-6`}>
           <div>
@@ -55,21 +55,17 @@ const TopicsArea = () => {
         </div>
       </div>
 
-      {buttonFlag == true ? (
-        <div
-          onClick={onClickOpen}
-          className={`${Styles.button} bg-white shadow-md`}
-        >
-          <AnnouncementIcon fontSize={"large"} />
-        </div>
-      ) : (
-        <div
-          onClick={onClickClose}
-          className={`${Styles.button} bg-white shadow-md`}
-        >
-          <CloseIcon fontSize={"large"} />
-        </div>
-      )}
+      <div
+        style={
+          buttonFlag == true
+            ? { opacity: "1", visibility: "visible" }
+            : { opacity: "0", visibility: "hidden" }
+        }
+        onClick={onClickClose}
+        className={`${Styles.button} bg-white shadow-md`}
+      >
+        <CloseIcon fontSize={"large"} />
+      </div>
     </>
   );
 };

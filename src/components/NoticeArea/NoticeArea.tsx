@@ -21,8 +21,12 @@ const NoticeArea: React.VFC = () => {
         },
       })
       .then((res) => {
-        const data = res.data.contents;
-        setNoticeData(data);
+        let data = res.data.contents;
+        let newData = [];
+        for (let i = 1; i < data.length; i++) {
+          newData.push(data[i]);
+        }
+        setNoticeData(newData);
       });
   }, []);
 
@@ -32,9 +36,13 @@ const NoticeArea: React.VFC = () => {
       <ul className={`${Styles.ul}`}>
         {noticeData.map((data) => (
           <li key={data.id} className={`${Styles.li}`}>
-            <Link href={data.link}>
-              <a>{data.title}</a>
-            </Link>
+            {data.link ? (
+              <Link href={data.link} target="_blank" rel="noopener">
+                {data.title}
+              </Link>
+            ) : (
+              <p>{data.title}</p>
+            )}
           </li>
         ))}
       </ul>
