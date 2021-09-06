@@ -13,8 +13,8 @@ const Header: React.FC = () => {
         <div
           className={`flex items-center justify-between h-24 p-6 lg:flex-col lg:justify-start lg:items-center lg:h-screen lg:sticky lg:top-0 lg:px-4 lg:pt-12 lg:w-64`}
         >
-          <div className={`text-2xl font-shinppori`}>
-            <Link href="/">DAIMARU HAKUI</Link>
+          <div className={`text-4xl font-bold font-Roboto`}>
+            <Link href="/">MY UNI</Link>
           </div>
 
           <nav className={`hidden lg:block my-16`}>

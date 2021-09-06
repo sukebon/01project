@@ -6,7 +6,7 @@ import {
   CardMedia,
   Link,
 } from "@material-ui/core";
-import Styels from "./CatalogCard.module.scss";
+import Styles from "./CatalogCard.module.scss";
 
 const CatalogCard: React.FC<any> = ({ catalogs }) => {
   return (
@@ -15,7 +15,7 @@ const CatalogCard: React.FC<any> = ({ catalogs }) => {
         <Card
           key={catalog.id}
           style={{ width: "270px", margin: "0.5rem" }}
-          className={`${Styels.root}`}
+          className={`${Styles.root}`}
         >
           <Link
             href={catalog.link}
@@ -43,7 +43,7 @@ const CatalogCard: React.FC<any> = ({ catalogs }) => {
               </CardMedia>
               <CardContent>
                 <h3
-                  className={`text-sm tracking-tighter text-gray-900 overflow-hidden whitespace-pre overflow-ellipsis`}
+                  className={`${Styles.title} text-sm tracking-tighter text-gray-900 overflow-hidden whitespace-pre`}
                 >
                   {catalog.title}
                   <span className={`ml-2 `}>{catalog.year}</span>

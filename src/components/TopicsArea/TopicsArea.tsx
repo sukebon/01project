@@ -35,9 +35,13 @@ const MessageArea: React.FC = () => {
       <div className="w-full h-10 flex justify-center items-center sticky bg-gray-800 text-white">
         {topicsData.map((value) => (
           <p key={value.id} className={`${Styles.text} px-2`}>
-            <Link href={value.link} target="_blank" rel="noopener">
-              {`${value.title}`}
-            </Link>
+            {value.link ? (
+              <Link href={value.link} target="_blank" rel="noopener">
+                {`${value.title}`}
+              </Link>
+            ) : (
+              value.title
+            )}
           </p>
         ))}
       </div>

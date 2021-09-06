@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         shinppori: ["Shippori Mincho"],
+        robot: ["Roboto"],
       },
     },
   },
