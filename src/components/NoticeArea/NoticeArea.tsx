@@ -17,7 +17,7 @@ const NoticeArea: React.VFC = () => {
     axios
       .get("https://daimaru-hakui.microcms.io/api/v1/topics", {
         headers: {
-          "X-API-KEY": "3c62454d-9a98-4e3d-aee1-d337c3bbdf7e",
+          "X-API-KEY": process.env.NEXT_PUBLIC_MICROCMS_API_KEY,
         },
       })
       .then((res) => {

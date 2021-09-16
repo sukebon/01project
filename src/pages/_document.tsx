@@ -6,12 +6,8 @@ class MyDocument extends Document {
       <Html lang="ja">
         <Head>
           <link
-            href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&display=swap"
             rel="stylesheet"
-          ></link>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:wght@900&Roboto:300,400,500,700&display=swap"
+            href="https://fonts.googleapis.com/css?family=Roboto:wght@900&Roboto:300,400,500,700&Shippori+Mincho&display=swap"
           />
         </Head>
         <body>

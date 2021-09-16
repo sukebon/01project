@@ -18,14 +18,14 @@ const Catalog: React.FC<Props> = (props) => {
 
   //オブジェクトにkanaを追加して昇順にSORT
   useEffect(() => {
-    apiData.map((value: any) => {
-      return listCompany.map((v: any) => {
+    apiData.map((value) => {
+      return listCompany.map((v) => {
         if (value.maker == v.maker) {
           return (value.kana = v.kana);
         }
       });
     });
-    apiData.sort((a: any, b: any) => {
+    apiData.sort((a, b) => {
       if (a.kana > b.kana) {
         return 1;
       } else {
@@ -41,6 +41,7 @@ const Catalog: React.FC<Props> = (props) => {
   const [categoryValue, setCategoryValue] = useState("");
   const [seasonValue, setSeasonValue] = useState("");
   const [makerValue, setMakerValue] = useState("");
+
   //seasonの重複を削除
   useEffect(() => {
     const seasonData = catalogs.map((value) => {
@@ -63,44 +64,32 @@ const Catalog: React.FC<Props> = (props) => {
     setMakerList(newData);
   }, [catalogs]);
 
+  //カテゴリーセレクターを選択した時のフィルター
   const onChangeCategory = (e: any) => {
     e.preventDefault();
     setCategoryValue(e.target.value);
 
-    let prevCatalogs = apiData.filter((catalog) => {
-      if (catalog.season.includes(seasonValue) || seasonValue == "") {
-        return catalog;
-      }
-    });
+    let prevCatalogs = [];
+    prevCatalogs = selectedSeasonFilter(apiData);
+    prevCatalogs = selectedMakerFilter(prevCatalogs);
 
-    prevCatalogs = prevCatalogs.filter((catalog) => {
-      if (catalog.maker.includes(makerValue) || makerValue == "") {
-        return catalog;
-      }
-    });
-
-    let newCatalogs = prevCatalogs.filter((catalog) => {
+    let newCatalogs = prevCatalogs.filter((catalog: any) => {
       if (e.target.value === "") return catalog;
       return catalog.category.includes(e.target.value);
     });
     setCatalogs(newCatalogs);
   };
 
+  //シーズンセレクターを選択した時のフィルター
   const onChangeSeason = (e: any) => {
     e.preventDefault();
     setSeasonValue(e.target.value);
 
-    let prevCatalogs = apiData.filter((catalog) => {
-      if (catalog.category.includes(categoryValue) || categoryValue == "")
-        return catalog;
-    });
+    let prevCatalogs = [];
+    prevCatalogs = selectedCatgoryFilter(apiData);
+    prevCatalogs = selectedMakerFilter(prevCatalogs);
 
-    prevCatalogs = prevCatalogs.filter((catalog) => {
-      if (catalog.maker.includes(makerValue) || makerValue == "")
-        return catalog;
-    });
-
-    let newCatalogs = prevCatalogs.filter((catalog) => {
+    let newCatalogs = prevCatalogs.filter((catalog: any) => {
       if (catalog.season.includes(e.target.value) || e.target.value === "") {
         return catalog;
       }
@@ -108,25 +97,48 @@ const Catalog: React.FC<Props> = (props) => {
     setCatalogs(newCatalogs);
   };
 
+  //メーカーセレクターを選択した時のフィルター
   const onChangeMaker = (e: any) => {
     e.preventDefault();
     setMakerValue(e.target.value);
 
-    let prevCatalogs = apiData.filter((catalog) => {
-      if (catalog.category.includes(categoryValue) || categoryValue == "")
-        return catalog;
-    });
+    let prevCatalogs = [];
+    prevCatalogs = selectedCatgoryFilter(apiData);
+    prevCatalogs = selectedSeasonFilter(prevCatalogs);
 
-    prevCatalogs = prevCatalogs.filter((catalog) => {
-      if (catalog.season.includes(seasonValue) || seasonValue == "")
-        return catalog;
-    });
-
-    let newCatalogs = prevCatalogs.filter((catalog) => {
+    let newCatalogs = prevCatalogs.filter((catalog: any) => {
       if (catalog.maker.includes(e.target.value) || e.target.value == "")
         return catalog;
     });
     setCatalogs(newCatalogs);
+  };
+
+  //カテゴリーのフィルター関数
+  const selectedCatgoryFilter = (lists: any) => {
+    let prevCatalogs = [];
+    prevCatalogs = lists.filter((list: any) => {
+      if (list.category.includes(categoryValue) || categoryValue == "")
+        return list;
+    });
+    return prevCatalogs;
+  };
+
+  //シーズンのフィルター関数
+  const selectedSeasonFilter = (lists: any) => {
+    let prevCatalogs = [];
+    prevCatalogs = lists.filter((list: any) => {
+      if (list.season.includes(seasonValue) || seasonValue == "") return list;
+    });
+    return prevCatalogs;
+  };
+
+  //メーカーのフィルター関数
+  const selectedMakerFilter = (lists: any) => {
+    let prevCatalogs = [];
+    prevCatalogs = lists.filter((list: any) => {
+      if (list.maker.includes(makerValue) || makerValue == "") return list;
+    });
+    return prevCatalogs;
   };
 
   const onClickReset = () => {
@@ -157,7 +169,6 @@ const Catalog: React.FC<Props> = (props) => {
             </InputLabel>
             <Select
               labelId="demo-simple-select-category-label"
-              // id="demo-simple-select-outlined"
               value={categoryValue}
               onChange={onChangeCategory}
               label="category"
@@ -183,7 +194,6 @@ const Catalog: React.FC<Props> = (props) => {
             </InputLabel>
             <Select
               labelId="demo-simple-select-season-label"
-              // id="demo-simple-select-outlined"
               value={seasonValue}
               onChange={onChangeSeason}
               label="season"
@@ -209,7 +219,6 @@ const Catalog: React.FC<Props> = (props) => {
             </InputLabel>
             <Select
               labelId="demo-simple-select-maker-label"
-              // id="demo-simple-select-maker"
               value={makerValue}
               onChange={onChangeMaker}
               label="maker"
@@ -273,16 +282,6 @@ export async function getStaticProps() {
     return content.transaction === true;
   });
   let listCompany = dataCompanyLists.contents;
-
-  // apiData.forEach((value: any) => {
-  //   apiData = listCompany.map((v: any) => {
-  //     if (value.maker == v.maker) {
-  //       return (value.kana = v.kana || null);
-  //     } else {
-  //       return value;
-  //     }
-  //   });
-  // });
 
   apiData = apiData.sort((a: any, b: any) => {
     if (a.kana > b.kana) {
