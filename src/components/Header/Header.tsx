@@ -35,7 +35,7 @@ const Header: React.FC = () => {
               <li>
                 
                 <ListAltIcon className={`mb-1 mr-2`} />
-                <a href="https://stock-next.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <a href="https://stock-next.vercel.app/login" target="_blank" rel="noopener noreferrer">
                   在庫表
                 </a>
               </li>
