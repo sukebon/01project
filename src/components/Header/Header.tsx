@@ -3,6 +3,7 @@ import React from "react";
 import Styles from "./Header.module.scss";
 import HomeIcon from "@material-ui/icons/Home";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
+import ListAltIcon from '@material-ui/icons/ListAlt';
 import LocalPostOfficeIcon from "@material-ui/icons/LocalPostOffice";
 import TemporaryDrawer from "components/TemporaryDrawer/TemporaryDrawer";
 
@@ -32,8 +33,15 @@ const Header: React.FC = () => {
                 </Link>
               </li>
               <li>
+                
+                <ListAltIcon className={`mb-1 mr-2`} />
+                <a href="https://stock-next.vercel.app/" target="_blank" rel="noopener noreferrer">
+                  在庫表
+                </a>
+              </li>
+              <li>
                 <LocalPostOfficeIcon className={`mb-1 mr-2`} />
-                <Link href="/contact">
+                <Link href="/contact" >
                   <a>お問い合わせ</a>
                 </Link>
               </li>
