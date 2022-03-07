@@ -10,6 +10,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import HomeIcon from "@material-ui/icons/Home";
+import ListAltIcon from '@material-ui/icons/ListAlt';
 import Link from "next/link";
 
 type Anchor = "left";
@@ -60,6 +61,15 @@ export default function TemporaryDrawer() {
             <Link href="/catalog">
               <a>WEBカタログ</a>
             </Link>
+          </ListItemText>
+        </ListItem>
+
+        <ListItem>
+          <ListItemIcon>
+            <ListAltIcon />
+          </ListItemIcon>
+          <ListItemText>
+          <a href="https://stock-next.vercel.app/login" target="_blank" rel="noopener noreferrer">在庫照会</a>
           </ListItemText>
         </ListItem>
 
