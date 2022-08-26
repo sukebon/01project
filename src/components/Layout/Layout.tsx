@@ -4,8 +4,9 @@ import React from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import ScrollTop from "components/ScrollTop/ScrollTop";
+import { NextPage } from "next";
 
-const Layout: React.FC = (props) => {
+const Layout: NextPage = (props) => {
   const { children } = props;
   return (
     <>
