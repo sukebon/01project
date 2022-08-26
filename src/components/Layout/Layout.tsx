@@ -20,7 +20,7 @@ const Layout: React.FC = (props) => {
           <ScrollTop />
         </main>
       </div>
-      <PopUpArea />
+      {/* <PopUpArea /> */}
     </>
   );
 };
