@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 import ScrollTop from "components/ScrollTop/ScrollTop";
 import { NextPage } from "next";
 
-const Layout: NextPage = (props) => {
+const Layout: NextPage<any> = (props) => {
   const { children } = props;
   return (
     <>
