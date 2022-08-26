@@ -2,7 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   // distDir: "build",
-  experimental: {
-    optimizeFonts: true,
-  },
+  // experimental: {
+  //   optimizeFonts: true,
+  // },
 };
