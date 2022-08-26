@@ -3,6 +3,7 @@ import PopUpArea from "components/PopUpArea/PopUpArea";
 import React from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import ScrollTop from "components/ScrollTop/ScrollTop";
 
 const Layout: React.FC = (props) => {
   const { children } = props;
@@ -16,6 +17,7 @@ const Layout: React.FC = (props) => {
         <main className={`min-h-screen w-full overflow-hidden`}>
           {children}
           {/* <Footer /> */}
+          <ScrollTop />
         </main>
       </div>
       <PopUpArea />

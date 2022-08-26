@@ -1,7 +1,14 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const Home: NextPage = () => {
+  const router = useRouter();
+  useEffect(() => {
+    router.push("/catalog");
+    console.log("a");
+  }, [router]);
   return (
     <div className="container">
       <Head>
@@ -10,7 +17,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={`flex justify-center h-screen items-center`}>
-        <h1 className={`text-5xl`}>WELCOME</h1>
+        {/* <h1 className={`text-5xl`}>WELCOME</h1> */}
       </div>
     </div>
   );
