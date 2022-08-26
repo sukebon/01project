@@ -1,5 +1,6 @@
 import React from "react";
 import Styles from "./ScrollTop.module.scss";
+import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 const ScrollTop = () => {
   return (
     <div>
@@ -12,7 +13,7 @@ const ScrollTop = () => {
           });
         }}
       >
-        Top
+        <ArrowDropUpIcon fontSize={"large"} />
       </div>
     </div>
   );
