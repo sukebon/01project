@@ -5,7 +5,7 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 // import HomeIcon from "@mui/icons-material/Home";
 // import ListAltIcon from '@mui/icons-material/ListAlt';
 import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
-import {TemporaryDrawer} from "components/TemporaryDrawer/TemporaryDrawer";
+import {TemporaryDrawer} from "@/src/components/TemporaryDrawer/TemporaryDrawer";
 
 export const Header: FC = () => {
   return (
