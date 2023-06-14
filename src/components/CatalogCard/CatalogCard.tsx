@@ -1,3 +1,4 @@
+import { FC } from "react";
 /* eslint-disable @next/next/no-img-element */
 import {
   Card,
@@ -5,13 +6,18 @@ import {
   CardContent,
   CardMedia,
   Link,
-} from "@material-ui/core";
+} from "@mui/material";
 import Styles from "./CatalogCard.module.scss";
+import { Catalog } from "../../../types";
 
-const CatalogCard: React.FC<any> = ({ catalogs }) => {
+type Props = {
+  catalogs:Catalog[]
+}
+
+export const CatalogCard: FC<Props> = ({ catalogs }) => {
   return (
     <>
-      {catalogs.map((catalog: any) => (
+      {catalogs.map((catalog) => (
         <Card
           key={catalog.id}
           style={{ width: "270px", margin: "0.5rem" }}
@@ -57,5 +63,3 @@ const CatalogCard: React.FC<any> = ({ catalogs }) => {
     </>
   );
 };
-
-export default CatalogCard;

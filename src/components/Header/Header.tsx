@@ -1,13 +1,13 @@
 import Link from "next/link";
-import React from "react";
+import { FC } from "react";
 import Styles from "./Header.module.scss";
-import HomeIcon from "@material-ui/icons/Home";
-import MenuBookIcon from "@material-ui/icons/MenuBook";
-import ListAltIcon from '@material-ui/icons/ListAlt';
-import LocalPostOfficeIcon from "@material-ui/icons/LocalPostOffice";
-import TemporaryDrawer from "components/TemporaryDrawer/TemporaryDrawer";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+// import HomeIcon from "@mui/icons-material/Home";
+// import ListAltIcon from '@mui/icons-material/ListAlt';
+import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
+import {TemporaryDrawer} from "components/TemporaryDrawer/TemporaryDrawer";
 
-const Header: React.FC = () => {
+export const Header: FC = () => {
   return (
     <>
       <div className={`w-full bg-white shadow-md lg:w-64 lg:min-h-full`}>
@@ -20,30 +20,25 @@ const Header: React.FC = () => {
 
           <nav className={`hidden lg:block my-16`}>
             <ul className={`${Styles.list}`}>
-              <li>
+              {/* <li>
                 <HomeIcon className={`mb-1 mr-2`} />
                 <Link href="/">
-                  <a>トップページ</a>
+                  トップページ
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <MenuBookIcon className={`mb-1 mr-2`} />
-                <Link href="/catalog">
-                  <a>WEBカタログ</a>
-                </Link>
+                <Link href="/catalog">WEBカタログ</Link>
               </li>
-              <li>
-                
+              {/* <li>
                 <ListAltIcon className={`mb-1 mr-2`} />
                 <a href="https://stock-next.vercel.app/login" target="_blank" rel="noopener noreferrer">
                   在庫照会
                 </a>
-              </li>
+              </li> */}
               <li>
                 <LocalPostOfficeIcon className={`mb-1 mr-2`} />
-                <Link href="/contact" >
-                  <a>お問い合わせ</a>
-                </Link>
+                <Link href="/contact">お問い合わせ</Link>
               </li>
             </ul>
           </nav>
@@ -56,5 +51,3 @@ const Header: React.FC = () => {
     </>
   );
 };
-
-export default Header;

@@ -6,61 +6,50 @@ import {
   InputLabel,
   MenuItem,
   Select,
-} from "@material-ui/core";
-import ClearIcon from "@material-ui/icons/Clear";
-import CatalogCard from "../../components/CatalogCard/CatalogCard";
+} from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
+import { CatalogCard } from "../../components/CatalogCard/CatalogCard";
 import Styles from "./index.module.scss";
 import Head from "next/head";
-import NoticeArea from "components/NoticeArea/NoticeArea";
+import { NextPage } from "next";
+import { Catalog } from "../../../types";
+import { CardDm } from "components/CardDm/CardDm";
+// import NoticeArea from "components/NoticeArea/NoticeArea";
 
-const Catalog: React.FC<Props> = (props) => {
-  const { apiData, listCategory, listCompany } = props;
-
-  //オブジェクトにkanaを追加して昇順にSORT
-  useEffect(() => {
-    apiData.map((value) => {
-      return listCompany.map((v) => {
-        if (value.maker == v.maker) {
-          return (value.kana = v.kana);
-        }
-      });
-    });
-    apiData.sort((a, b) => {
-      if (a.kana > b.kana) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const [catalogs, setCatalogs] = useState(apiData);
-  const [seasonList, setSeasonList] = useState([]);
-  const [makerList, setMakerList] = useState([]);
+const Catalog: NextPage<Props> = ({ apiData, listCategory, listCompany }) => {
+  const [catalogs, setCatalogs] = useState<Catalog[]>([]);
+  const [seasonList, setSeasonList] = useState<string[]>([]);
+  const [makerList, setMakerList] = useState<string[]>([]);
   const [categoryValue, setCategoryValue] = useState("");
   const [seasonValue, setSeasonValue] = useState("");
   const [makerValue, setMakerValue] = useState("");
 
+  //オブジェクトにkanaを追加して昇順にSORT
+  useEffect(() => {
+    apiData.map((data) =>
+      listCompany.map(
+        (campany) => data.maker === campany.maker && (data.kana = campany.kana)
+      )
+    );
+    const newApiData = apiData.sort((a, b) => (a.kana < b.kana ? -1 : 1));
+    setCatalogs(newApiData);
+  }, [apiData, listCompany]);
+
   //seasonの重複を削除
   useEffect(() => {
-    const seasonData = catalogs.map((value) => {
-      return value.season[0];
+    const seasonData = catalogs.map((catalog) => {
+      return catalog.season[0];
     });
-    const newData: any = seasonData.filter((value, index, self) => {
-      if (self.indexOf(value) == index) return value;
-    });
+    const newData = Array.from(new Set(seasonData));
     setSeasonList(newData);
   }, [catalogs]);
 
   //makerの重複を削除
   useEffect(() => {
-    const makerData = catalogs.map((value) => {
-      return value.maker;
+    const makerData = catalogs.map((data) => {
+      return data.maker;
     });
-    const newData: any = makerData.filter((value, index, self) => {
-      if (self.indexOf(value) == index) return value;
-    });
+    const newData = Array.from(new Set(makerData));
     setMakerList(newData);
   }, [catalogs]);
 
@@ -85,11 +74,11 @@ const Catalog: React.FC<Props> = (props) => {
     e.preventDefault();
     setSeasonValue(e.target.value);
 
-    let prevCatalogs = [];
+    let prevCatalogs: Catalog[] = [];
     prevCatalogs = selectedCatgoryFilter(apiData);
     prevCatalogs = selectedMakerFilter(prevCatalogs);
 
-    let newCatalogs = prevCatalogs.filter((catalog: any) => {
+    let newCatalogs = prevCatalogs.filter((catalog) => {
       if (catalog.season.includes(e.target.value) || e.target.value === "") {
         return catalog;
       }
@@ -102,11 +91,11 @@ const Catalog: React.FC<Props> = (props) => {
     e.preventDefault();
     setMakerValue(e.target.value);
 
-    let prevCatalogs = [];
+    let prevCatalogs: Catalog[] = [];
     prevCatalogs = selectedCatgoryFilter(apiData);
     prevCatalogs = selectedSeasonFilter(prevCatalogs);
 
-    let newCatalogs = prevCatalogs.filter((catalog: any) => {
+    let newCatalogs = prevCatalogs.filter((catalog) => {
       if (catalog.maker.includes(e.target.value) || e.target.value == "")
         return catalog;
     });
@@ -114,9 +103,9 @@ const Catalog: React.FC<Props> = (props) => {
   };
 
   //カテゴリーのフィルター関数
-  const selectedCatgoryFilter = (lists: any) => {
+  const selectedCatgoryFilter = (lists: Catalog[]) => {
     let prevCatalogs = [];
-    prevCatalogs = lists.filter((list: any) => {
+    prevCatalogs = lists.filter((list) => {
       if (list.category.includes(categoryValue) || categoryValue == "")
         return list;
     });
@@ -124,18 +113,18 @@ const Catalog: React.FC<Props> = (props) => {
   };
 
   //シーズンのフィルター関数
-  const selectedSeasonFilter = (lists: any) => {
+  const selectedSeasonFilter = (lists: Catalog[]) => {
     let prevCatalogs = [];
-    prevCatalogs = lists.filter((list: any) => {
+    prevCatalogs = lists.filter((list) => {
       if (list.season.includes(seasonValue) || seasonValue == "") return list;
     });
     return prevCatalogs;
   };
 
   //メーカーのフィルター関数
-  const selectedMakerFilter = (lists: any) => {
+  const selectedMakerFilter = (lists: Catalog[]) => {
     let prevCatalogs = [];
-    prevCatalogs = lists.filter((list: any) => {
+    prevCatalogs = lists.filter((list) => {
       if (list.maker.includes(makerValue) || makerValue == "") return list;
     });
     return prevCatalogs;
@@ -236,8 +225,9 @@ const Catalog: React.FC<Props> = (props) => {
         </div>
 
         <Button
+          className="bg-red-500"
           variant="contained"
-          color="secondary"
+          color="error"
           startIcon={<ClearIcon />}
           onClick={onClickReset}
           aria-label="reset button"
@@ -249,6 +239,7 @@ const Catalog: React.FC<Props> = (props) => {
       <section
         className={`${Styles.container} flex flex-wrap justify-center mx-auto mb-12`}
       >
+        <CardDm />
         <CatalogCard catalogs={catalogs} />
       </section>
     </>
@@ -256,7 +247,6 @@ const Catalog: React.FC<Props> = (props) => {
 };
 export default Catalog;
 
-//microCMSからデータ取得
 export async function getStaticProps() {
   const url = "https://daimaru-hakui.microcms.io/api/v1";
   const apiKey: string = "3c62454d-9a98-4e3d-aee1-d337c3bbdf7e";
@@ -286,8 +276,6 @@ export async function getStaticProps() {
   apiData = apiData.sort((a: any, b: any) => {
     if (a.kana > b.kana) {
       return 1;
-    } else {
-      return -1;
     }
   });
 
@@ -299,32 +287,36 @@ export async function getStaticProps() {
 }
 
 type Props = {
-  apiData: {
-    id: string;
-    maker: string;
-    title: string;
-    year: string;
-    category: Array<string>;
-    season: Array<string>;
-    link: string;
-    image: {
-      url: string;
-      height: number;
-      width: number;
-    };
-    kana: string;
-    transaction: boolean;
-  }[];
-  listCategory: {
-    id: string;
-    key: string;
-    value: string;
-  }[];
+  apiData: ApiData[];
+  listCategory: listCategory[];
+  listCompany: listCompany[];
+};
 
-  listCompany: {
-    id: string;
-    maker: string;
-    kana: string;
-    link: string;
-  }[];
+type ApiData = {
+  id: string;
+  maker: string;
+  title: string;
+  year: string;
+  category: Array<string>;
+  season: Array<string>;
+  link: string;
+  image: {
+    url: string;
+    height: number;
+    width: number;
+  };
+  kana: string;
+  transaction: boolean;
+};
+type listCategory = {
+  id: string;
+  key: string;
+  value: string;
+};
+
+type listCompany = {
+  id: string;
+  maker: string;
+  kana: string;
+  link: string;
 };
