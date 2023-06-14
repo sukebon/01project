@@ -2,7 +2,7 @@
 // import {PopUpArea} from "components/PopUpArea/PopUpArea";
 import { ReactNode } from "react";
 import { Header } from "../Header/Header";
-import {ScrollTop} from "components/ScrollTop/ScrollTop";
+import {ScrollTop} from "@/src/components/ScrollTop/ScrollTop";
 import { NextPage } from "next";
 
 type Props = {

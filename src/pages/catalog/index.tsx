@@ -8,12 +8,12 @@ import {
   Select,
 } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
-import { CatalogCard } from "../../components/CatalogCard/CatalogCard";
+import { CatalogCard } from "@/src/components/CatalogCard/CatalogCard";
 import Styles from "./index.module.scss";
 import Head from "next/head";
 import { NextPage } from "next";
 import { Catalog } from "../../../types";
-import { CardDm } from "components/CardDm/CardDm";
+import { CardDm } from "@/src/components/CardDm/CardDm";
 // import NoticeArea from "components/NoticeArea/NoticeArea";
 
 const Catalog: NextPage<Props> = ({ apiData, listCategory, listCompany }) => {
