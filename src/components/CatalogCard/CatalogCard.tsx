@@ -49,7 +49,7 @@ export const CatalogCard: FC<Props> = ({ catalogs }) => {
               </CardMedia>
               <CardContent>
                 <h3
-                  className={`${Styles.title} text-sm tracking-tighter text-gray-900 overflow-hidden whitespace-pre`}
+                  className={`${Styles.title} no-underline text-sm tracking-tighter text-gray-900 overflow-hidden whitespace-pre`}
                 >
                   {catalog.title}
                   <span className={`ml-2 `}>{catalog.year}</span>
