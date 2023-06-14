@@ -1,8 +1,9 @@
-import {FC} from "react";
+"use client";
+import { FC } from "react";
 import Styles from "./ScrollTop.module.scss";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
-export const ScrollTop:FC = () => {
+export const ScrollTop: FC = () => {
   return (
     <div>
       <div
