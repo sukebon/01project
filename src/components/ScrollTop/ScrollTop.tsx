@@ -1,7 +1,8 @@
-import React from "react";
+import {FC} from "react";
 import Styles from "./ScrollTop.module.scss";
-import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
-const ScrollTop = () => {
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+
+export const ScrollTop:FC = () => {
   return (
     <div>
       <div
@@ -18,5 +19,3 @@ const ScrollTop = () => {
     </div>
   );
 };
-
-export default ScrollTop;

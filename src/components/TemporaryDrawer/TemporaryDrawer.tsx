@@ -1,22 +1,22 @@
-import React from "react";
-import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import MailIcon from "@material-ui/icons/Mail";
-import MenuIcon from "@material-ui/icons/Menu";
-import MenuBookIcon from "@material-ui/icons/MenuBook";
-import HomeIcon from "@material-ui/icons/Home";
-import ListAltIcon from '@material-ui/icons/ListAlt';
+import { useState, FC } from "react";
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MailIcon from "@mui/icons-material/Mail";
+import MenuIcon from "@mui/icons-material/Menu";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import HomeIcon from "@mui/icons-material/Home";
+// import ListAltIcon from '@mui/icons-material/ListAlt';
 import Link from "next/link";
 
 type Anchor = "left";
 
-export default function TemporaryDrawer() {
-  const [state, setState] = React.useState({
+export const TemporaryDrawer: FC = () => {
+  const [state, setState] = useState({
     left: false,
   });
 
@@ -30,7 +30,6 @@ export default function TemporaryDrawer() {
       ) {
         return;
       }
-
       setState({ ...state, [anchor]: open });
     };
 
@@ -47,9 +46,7 @@ export default function TemporaryDrawer() {
             <HomeIcon />
           </ListItemIcon>
           <ListItemText>
-            <Link href="/">
-              <a>ホーム</a>
-            </Link>
+            <Link href="/">ホーム</Link>
           </ListItemText>
         </ListItem>
 
@@ -58,29 +55,25 @@ export default function TemporaryDrawer() {
             <MenuBookIcon />
           </ListItemIcon>
           <ListItemText>
-            <Link href="/catalog">
-              <a>WEBカタログ</a>
-            </Link>
+            <Link href="/catalog">WEBカタログ</Link>
           </ListItemText>
         </ListItem>
 
-        <ListItem>
+        {/* <ListItem>
           <ListItemIcon>
             <ListAltIcon />
           </ListItemIcon>
           <ListItemText>
           <a href="https://stock-next.vercel.app/login" target="_blank" rel="noopener noreferrer">在庫照会</a>
           </ListItemText>
-        </ListItem>
+        </ListItem> */}
 
         <ListItem>
           <ListItemIcon>
             <MailIcon />
           </ListItemIcon>
           <ListItemText>
-            <Link href="/contact">
-              <a>お問い合わせ</a>
-            </Link>
+            <Link href="/contact">お問い合わせ</Link>
           </ListItemText>
         </ListItem>
       </List>
@@ -89,19 +82,21 @@ export default function TemporaryDrawer() {
   );
 
   return (
-    <div>
-      <React.Fragment>
-        <Button onClick={toggleDrawer("left", true)} aria-label="drawer menu">
-          <MenuIcon />
-        </Button>
-        <Drawer
-          anchor={"left"}
-          open={state["left"]}
-          onClose={toggleDrawer("left", false)}
-        >
-          {list("left")}
-        </Drawer>
-      </React.Fragment>
-    </div>
+    <>
+      <Button
+        className="text-black"
+        onClick={toggleDrawer("left", true)}
+        aria-label="drawer menu"
+      >
+        <MenuIcon />
+      </Button>
+      <Drawer
+        anchor={"left"}
+        open={state["left"]}
+        onClose={toggleDrawer("left", false)}
+      >
+        {list("left")}
+      </Drawer>
+    </>
   );
-}
+};

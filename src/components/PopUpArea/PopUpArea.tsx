@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import AnnouncementIcon from "@material-ui/icons/Announcement";
-import CloseIcon from "@material-ui/icons/Close";
+import { useEffect, useState, FC } from "react";
+// import AnnouncementIcon from "@mui/icons-material/Announcement";
+import CloseIcon from "@mui/icons-material/Close";
 import Styles from "./PopUpArea.module.scss";
 import axios from "axios";
 
-const TopicsArea = () => {
+export const PopUpArea: FC = () => {
   useEffect(() => {
     axios
       .get("https://daimaru-hakui.microcms.io/api/v1/popup", {
@@ -69,4 +69,3 @@ const TopicsArea = () => {
     </>
   );
 };
-export default TopicsArea;

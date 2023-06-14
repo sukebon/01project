@@ -1,4 +1,4 @@
-import { createContext, ReactChild, ReactNode } from "react";
+import { createContext, ReactNode } from "react";
 import { useState } from "react";
 
 type Props = {

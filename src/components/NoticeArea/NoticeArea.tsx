@@ -1,17 +1,17 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import  {FC, useEffect, useState } from "react";
 import Styles from "./NoticeArea.module.scss";
-import { Link } from "@material-ui/core";
+import { Link } from "@mui/material";
 
-type Axios = {
+type NoticeData = {
   id: string;
   title: string;
   link: string;
   maker: string;
-}[];
+};
 
-const NoticeArea: React.VFC = () => {
-  const [noticeData, setNoticeData] = useState<Axios>([]);
+export const NoticeArea: FC = () => {
+  const [noticeData, setNoticeData] = useState<NoticeData[]>([]);
 
   useEffect(() => {
     axios
@@ -49,5 +49,3 @@ const NoticeArea: React.VFC = () => {
     </div>
   );
 };
-
-export default NoticeArea;

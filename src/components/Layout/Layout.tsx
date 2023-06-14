@@ -1,23 +1,25 @@
-import TopicsArea from "components/TopicsArea/TopicsArea";
-import PopUpArea from "components/PopUpArea/PopUpArea";
-import React from "react";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-import ScrollTop from "components/ScrollTop/ScrollTop";
+// import {HeaderTopicsArea} from "components/TopicsArea/TopicsArea";
+// import {PopUpArea} from "components/PopUpArea/PopUpArea";
+import { ReactNode } from "react";
+import { Header } from "../Header/Header";
+import {ScrollTop} from "components/ScrollTop/ScrollTop";
 import { NextPage } from "next";
 
-const Layout: NextPage<any> = (props) => {
+type Props = {
+  children: ReactNode;
+};
+
+const Layout: NextPage<Props> = (props) => {
   const { children } = props;
   return (
     <>
-      <TopicsArea />
+      {/* <HeaderTopicsArea /> */}
       <div className="flex flex-col lg:flex-row min-h-screen w-full">
         <header>
           <Header />
         </header>
         <main className={`min-h-screen w-full overflow-hidden`}>
           {children}
-          {/* <Footer /> */}
           <ScrollTop />
         </main>
       </div>

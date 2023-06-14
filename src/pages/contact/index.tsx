@@ -2,9 +2,9 @@ import emailjs from "emailjs-com";
 import { useState } from "react";
 import Styles from "./index.module.scss";
 import Head from "next/head";
-import { Button } from "@material-ui/core";
-import SendIcon from "@material-ui/icons/Send";
-import ClearIcon from "@material-ui/icons/Clear";
+import { Button } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import ClearIcon from "@mui/icons-material/Clear";
 
 const Contact: React.FC = () => {
   const [name, setName] = useState(""); // 「お名前」
@@ -182,7 +182,7 @@ const Contact: React.FC = () => {
                 <Button
                   type="submit"
                   variant="contained"
-                  color="default"
+                  color="inherit"
                   disabled={disableSend}
                   endIcon={<SendIcon />}
                 >
@@ -192,7 +192,7 @@ const Contact: React.FC = () => {
               <div className={`m-2`}>
                 <Button
                   variant="contained"
-                  color="default"
+                  color="inherit"
                   onClick={handleCanceled}
                   endIcon={<ClearIcon />}
                 >
