@@ -11,6 +11,7 @@ import Styles from "../CatalogCard/CatalogCard.module.scss";
 import axios from "axios";
 
 export const CardDm: FC = () => {
+  
   const [dm, setDm] = useState([]);
   useEffect(() => {
     const getDm = async () => {
@@ -57,7 +58,7 @@ export const CardDm: FC = () => {
                       alt={catalog.title}
                       style={{ height: "355px", width: "270px" }}
                       loading="lazy"
-                      className={`object-cover`}
+                      className="object-cover"
                     />
                   </picture>
                 </CardMedia>
