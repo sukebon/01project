@@ -1,6 +1,5 @@
 import { useState, useEffect, FC } from "react";
 import axios from "axios";
-import Styles from "./TopicsArea.module.scss";
 import { Link } from "@mui/material";
 import { TopicData } from "../../../types";
 
@@ -31,7 +30,7 @@ export const HeaderTopicsArea: FC = () => {
   return (
     <div className="w-full h-10 flex justify-center items-center sticky bg-gray-800 text-white">
       {topicsData.map(({ id, link, title }) => (
-        <p key={id} className={`${Styles.text} px-2`}>
+        <p key={id} className={`px-2`}>
           {link ? (
             <Link href={link} target="_blank" rel="noopener">
               {`${title}`}
