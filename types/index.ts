@@ -17,3 +17,13 @@ export type Catalog = {
     link: string;
     maker: string;
   };
+
+  export type Dm = {
+    id: string;
+    title: string;
+    desc: string;
+    link: string;
+    image: {
+      url: string;
+    };
+  };

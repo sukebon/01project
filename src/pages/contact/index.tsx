@@ -1,12 +1,12 @@
 import emailjs from "emailjs-com";
-import { useState } from "react";
+import { useState,FC } from "react";
 import Styles from "./index.module.scss";
 import Head from "next/head";
 import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const Contact: React.FC = () => {
+const Contact: FC = () => {
   const [name, setName] = useState(""); // 「お名前」
   const [company, setCompany] = useState(""); // 「会社名」
   const [tel, setTel] = useState(""); // 「会社名」
@@ -38,7 +38,7 @@ const Contact: React.FC = () => {
       });
   };
 
-  const handleClick = (e: any) => {
+  const handleClick = (e:any) => {
     e.preventDefault();
     sendMail(e);
   };

@@ -3,7 +3,7 @@ import { FC } from "react";
 import Styles from "./Header.module.scss";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 // import HomeIcon from "@mui/icons-material/Home";
-// import ListAltIcon from '@mui/icons-material/ListAlt';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
 import {TemporaryDrawer} from "@/src/components/TemporaryDrawer/TemporaryDrawer";
 
@@ -17,7 +17,6 @@ export const Header: FC = () => {
           <div className={`text-4xl font-bold font-Roboto`}>
             <Link href="/">MY UNI</Link>
           </div>
-
           <nav className={`hidden lg:block my-16`}>
             <ul className={`${Styles.list}`}>
               {/* <li>
@@ -30,12 +29,12 @@ export const Header: FC = () => {
                 <MenuBookIcon className={`mb-1 mr-2`} />
                 <Link href="/catalog">WEBカタログ</Link>
               </li>
-              {/* <li>
+              <li>
                 <ListAltIcon className={`mb-1 mr-2`} />
-                <a href="https://stock-next.vercel.app/login" target="_blank" rel="noopener noreferrer">
+                <a href="https://daimaru-maker-zaiko.vercel.app/daimaru" target="_blank" rel="noopener noreferrer">
                   在庫照会
                 </a>
-              </li> */}
+              </li>
               <li>
                 <LocalPostOfficeIcon className={`mb-1 mr-2`} />
                 <Link href="/contact">お問い合わせ</Link>

@@ -27,6 +27,7 @@ export const CatalogCard: FC<Props> = ({ catalogs }) => {
             href={catalog.link}
             target="_blank"
             rel="noopener"
+            style={{textDecoration:"none"}}
             className={`no-underline`}
           >
             <CardActionArea>
