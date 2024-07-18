@@ -31,7 +31,7 @@ export const Header: FC = () => {
               </li>
               <li>
                 <ListAltIcon className={`mb-1 mr-2`} />
-                <a href="https://daimaru-maker-zaiko.vercel.app/daimaru" target="_blank" rel="noopener noreferrer">
+                <a href="https://daimaru-web-zaiko.vercel.app/" target="_blank" rel="noopener noreferrer">
                   在庫照会
                 </a>
               </li>
